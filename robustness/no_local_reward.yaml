@@ -1,0 +1,39 @@
+# Same as config.yaml except history.local_bias = 0.0
+output_dir: results/robustness/no_local_reward
+seeds:
+- 0
+- 1
+- 2
+- 3
+- 4
+world:
+  n_candidates: 5000
+  n_jobs: 300
+  share_group_b: 0.3
+  pool_size: 40
+history:
+  bias: 1.0
+  local_bias: 0.0
+  shortlist_rate: 0.2
+split:
+  test_share: 0.3
+train:
+  hidden: 32
+  lr: 0.005
+  epochs: 25
+  batch_size: 256
+fairness:
+  lambdas:
+  - 0
+  - 3
+  - 10
+  - 30
+  - 100
+  sweep_lambda: 30
+eval:
+  k: 10
+bias_sweep:
+- 0.0
+- 0.5
+- 1.0
+- 1.5

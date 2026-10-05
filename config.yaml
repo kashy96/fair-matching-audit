@@ -1,0 +1,31 @@
+output_dir: results
+seeds: [0, 1, 2, 3, 4]
+
+world:
+  n_candidates: 5000
+  n_jobs: 300
+  share_group_b: 0.3      # internationally trained clinicians
+  pool_size: 40           # applicants per job
+
+history:                  # how past recruiters decided
+  bias: 1.0               # penalty against group B, in true-score units
+  local_bias: 0.8         # over-reward for local experience
+  shortlist_rate: 0.2
+
+split:
+  test_share: 0.3         # share of jobs held out
+
+train:
+  hidden: 32
+  lr: 0.005
+  epochs: 25
+  batch_size: 256
+
+fairness:
+  lambdas: [0, 3, 10, 30, 100]
+  sweep_lambda: 30        # used in the main comparison and the bias sweep
+
+eval:
+  k: 10
+
+bias_sweep: [0.0, 0.5, 1.0, 1.5]
